@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equipe</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fbeae6;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 40px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .card img {
+        width: 100px;
+        height: 100px;
+      }
+    }
+
+    .badge {
+      background-color: #000;
+      color: #fff;
+      font-size: 12px;
+      padding: 5px 10px;
+      border-radius: 20px;
+      margin: 10px auto;
+      display: inline-block;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .badge:hover {
+      background-color: #333;
+      transform: scale(1.05);
+    }
+
+    .name {
+      font-size: 16px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .button {
+      text-decoration: none;
+      background-color: #000;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: 14px;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .button:hover {
+      background-color: #333;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Card 1 -->
+    <div class="card">
+      <span class="badge">Loja Camaragibe</span>
+      <img src="https://raw.githubusercontent.com/josefelipe43257/Publica-o-de-imagens-e-videos-publicos/refs/heads/main/larissa.jpg" alt="Stephany">
+      <div class="name">Larissa</div>
+      <a href="https://wa.me/message/OASEJQ6LP74LO1" class="button">Contato</a>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card">
+      <span class="badge">Loja Camaragibe</span>
+      <img src="https://raw.githubusercontent.com/josefelipe43257/Publica-o-de-imagens-e-videos-publicos/refs/heads/main/vera%20lucia.jpg" alt="Vera Lucia">
+      <div class="name">Vera Lucia</div>
+      <a href="https://wa.me/message/FSEOY36RSJ4PM1" class="button">Contato</a>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card">
+      <span class="badge">Loja Camaragibe</span>
+      <img src="https://raw.githubusercontent.com/josefelipe43257/Publica-o-de-imagens-e-videos-publicos/refs/heads/main/miqueline.jpg" alt="Miqueline">
+      <div class="name">Miqueline</div>
+      <a href="https://wa.me/message/GSBPDAFCXKCLF1" class="button">Contato</a>
+    </div>
+  </div>
+</body>
+</html>
