@@ -75,18 +75,35 @@
       padding: 10px 20px;
       border-radius: 25px;
       font-size: 14px;
-      transition: background-color 0.3s, transform 0.3s;
+      transition: transform 0.3s;
+      animation: pulse 2s infinite;
+      display: inline-block;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        background-color: #000;
+      }
+      50% {
+        transform: scale(1.1);
+        background-color: #28a745; /* verde */
+      }
+      100% {
+        transform: scale(1);
+        background-color: #000;
+      }
     }
 
     .button:hover {
-      background-color: #333;
-      transform: scale(1.05);
+      transform: scale(1.1);
+      background-color: #28a745;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- Card 1 -->
+    <!-- Card Vera Lucia -->
     <div class="card">
       <span class="badge">Loja Camaragibe</span>
       <img src="https://raw.githubusercontent.com/josefelipe43257/Publica-o-de-imagens-e-videos-publicos/refs/heads/main/vera%20lucia.jpg" alt="Vera Lucia">
@@ -94,14 +111,21 @@
       <a href="https://wa.me/message/FSEOY36RSJ4PM1" class="button">Contato</a>
     </div>
 
-    <!-- Card 2 -->
+    <!-- Card Bruna Beatriz -->
     <div class="card">
       <span class="badge">Loja Camaragibe</span>
-      <img src="https://raw.githubusercontent.com/felipe8467/numero---secreto-2/refs/heads/main/ana%20cecilia.jpg" alt="Ana Cecilia">
-      <div class="name">Ana Cecilia</div>
-      <a href="https://wa.me/5581996009240" class="button">Contato</a>
+      <img src="https://raw.githubusercontent.com/josefelipe43257/Publica-o-de-imagens-e-videos-publicos/refs/heads/main/BRUNA%20BEATRIZ%20-%20VENDEDORA%20.jpg" alt="Bruna Beatriz">
+      <div class="name">Bruna Beatriz</div>
+      <a href="https://wa.me/message/OASEJQ6LP74LO1" class="button">Contato</a>
+    </div>
+
+    <!-- Card Larissa -->
+    <div class="card">
+      <span class="badge">Loja Camaragibe</span>
+      <img src="https://raw.githubusercontent.com/josefelipe43257/Publica-o-de-imagens-e-videos-publicos/refs/heads/main/LARISSA%20-%20NOVA%20VENDEDORA.jpg" alt="Larissa">
+      <div class="name">Larissa</div>
+      <a href="https://wa.me/558197314351" class="button">Contato</a>
     </div>
   </div>
 </body>
 </html>
-
