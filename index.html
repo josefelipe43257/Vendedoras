@@ -5,129 +5,191 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Equipe | Linda Moça Exclusive</title>
   <style>
-    :root {
-      --bg: #ffffff;
-      --card-bg: #ffffff;
-      --text: #1b1b1b;
-      --muted: #5d5d5d;
-      --brand: #000000;
-      --brand-hover: #28a745;
-      --radius: 16px;
-      --shadow-sm: 0 2px 10px rgba(0,0,0,.06);
-      --shadow-md: 0 10px 25px rgba(0,0,0,.10);
-      --container: min(1200px, 92vw);
+    :root{
+      --bg:#ffffff; --card-bg:#ffffff; --text:#1b1b1b; --muted:#5d5d5d;
+      --brand:#000000; --brand-hover:#28a745; --radius:16px;
+      --shadow-sm:0 2px 10px rgba(0,0,0,.06); --shadow-md:0 10px 25px rgba(0,0,0,.10);
+      --container:min(1200px,92vw);
+    }
+    body{margin:0;font-family:Arial, sans-serif;background:var(--bg);color:var(--text);-webkit-tap-highlight-color:transparent;}
+    .lmx-wrapper{display:flex;justify-content:center;padding:24px 16px;}
+    .lmx-container{width:var(--container);}
+    .lmx-header{text-align:center;margin-bottom:16px;}
+    .lmx-title{font-size:28px;font-weight:bold;margin:0 0 4px;}
+    .lmx-subtitle{font-size:15px;color:var(--muted);margin:0;}
+
+    /* --- Mobile: carrossel horizontal com snap --- */
+    .lmx-carousel{
+      display:flex;
+      gap:16px;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding:8px 4px 16px;
+    }
+    .lmx-carousel::-webkit-scrollbar{display:none;}
+    .lmx-slide{
+      scroll-snap-align:center;
+      flex:0 0 88%;        /* ocupa ~88% da tela pra aparecer “tem mais” */
+      max-width:480px;
     }
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      -webkit-tap-highlight-color: transparent;
+    /* Dots/paginação */
+    .lmx-dots{
+      display:flex;justify-content:center;gap:8px;margin:6px 0 22px;
+    }
+    .lmx-dot{
+      width:8px;height:8px;border-radius:999px;background:#d9d9d9;transition:transform .2s, background-color .2s;
+    }
+    .lmx-dot.is-active{background:#111;transform:scale(1.25);}
+
+    /* --- Desktop/Tablet: volta para grade --- */
+    @media (min-width: 768px){
+      .lmx-carousel{display:grid;overflow:visible;grid-template-columns:repeat(auto-fit, minmax(260px,1fr));gap:24px;padding:0;margin-top:12px;}
+      .lmx-slide{flex:unset;max-width:unset;scroll-snap-align:unset;}
+      .lmx-dots{display:none;}
     }
 
-    .lmx-wrapper { display: flex; justify-content: center; padding: 40px 20px; }
-    .lmx-container { width: var(--container); }
-    .lmx-header { text-align: center; margin-bottom: 40px; }
-    .lmx-title { font-size: 28px; font-weight: bold; }
-    .lmx-subtitle { font-size: 15px; color: var(--muted); }
-
-    .lmx-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
+    .lmx-card{
+      background:var(--card-bg);border-radius:var(--radius);box-shadow:var(--shadow-sm);
+      text-align:center;padding:24px;transition:transform .3s, box-shadow .3s;height:100%;
     }
+    .lmx-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);}
 
-    .lmx-card {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-sm);
-      text-align: center;
-      padding: 24px;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .lmx-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
-
-    .lmx-badge {
-      background: var(--brand); color: #fff; font-size: 12px; padding: 6px 12px;
-      border-radius: 999px; display: inline-block; margin-bottom: 10px;
-    }
-
-    .lmx-avatar {
-      width: 110px; height: 110px; border-radius: 50%;
-      object-fit: cover; object-position: center top;
-      margin: 0 auto 12px; box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-    }
-
-    .lmx-name { font-size: 17px; font-weight: bold; margin: 10px 0 4px; }
-    .lmx-role { font-size: 14px; color: var(--muted); margin-bottom: 20px; }
+    .lmx-badge{background:var(--brand);color:#fff;font-size:12px;padding:6px 12px;border-radius:999px;display:inline-block;margin-bottom:10px;}
+    .lmx-avatar{width:110px;height:110px;border-radius:50%;object-fit:cover;object-position:center top;margin:0 auto 12px;box-shadow:0 6px 16px rgba(0,0,0,0.1);}
+    .lmx-name{font-size:17px;font-weight:bold;margin:10px 0 4px;}
+    .lmx-role{font-size:14px;color:var(--muted);margin-bottom:20px;}
 
     .lmx-button{
-      display:inline-flex; align-items:center; justify-content:center; gap:8px;
-      text-decoration:none; color:#fff; background:var(--brand);
-      padding:12px 24px; border-radius:999px; font-weight:bold; font-size:14px;
-      min-height:44px;
-      transition:transform .2s ease-in-out, background-color .2s ease-in-out;
-      animation:pulseGreen 2.2s infinite ease-in-out;
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;color:#fff;background:var(--brand);
+      padding:12px 24px;border-radius:999px;font-weight:bold;font-size:14px;min-height:44px;
+      transition:transform .2s ease-in-out, background-color .2s ease-in-out;animation:pulseGreen 2.2s infinite ease-in-out;
     }
     @keyframes pulseGreen{
-      0%{transform:scale(1); background-color:var(--brand);}
-      50%{transform:scale(1.1); background-color:var(--brand-hover);}
-      100%{transform:scale(1); background-color:var(--brand);}
+      0%{transform:scale(1);background-color:var(--brand);}
+      50%{transform:scale(1.1);background-color:var(--brand-hover);}
+      100%{transform:scale(1);background-color:var(--brand);}
     }
-    .lmx-button:hover{ transform:scale(1.1); background:var(--brand-hover); }
-
-    .lmx-wa-icon{
-      width:18px; height:18px; display:inline-block; background:currentColor;
+    .lmx-button:hover{transform:scale(1.1);background:var(--brand-hover);}
+    .lmx-wa-icon{width:18px;height:18px;display:inline-block;background:currentColor;
       -webkit-mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23000"><path d="M20.52 3.48A11.94 11.94 0 0012.06 0C5.49.03.18 5.34.21 11.9a11.74 11.74 0 001.51 5.86L0 24l6.4-1.66a11.93 11.93 0 005.66 1.44h.01c6.57 0 11.88-5.31 11.91-11.88a11.78 11.78 0 00-3.46-8.42zm-8.46 18.26h-.01A9.96 9.96 0 016.76 20l-.35-.21-3.8 1 1.02-3.7-.23-.38a9.93 9.93 0 01-1.5-5.2c-.02-5.5 4.46-9.99 9.96-10.01h.01c2.67 0 5.18 1.04 7.07 2.93a9.9 9.9 0 012.94 7.06c-.02 5.5-4.51 9.97-10.01 9.97zm5.48-7.46c-.3-.15-1.78-.88-2.06-.98-.28-.1-.48-.15-.69 .15-.2 .3-.79 .98-.97 1.18-.18 .2-.36 .23-.66 .08-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.48-1.76-1.66-2.06-.17-.3-.02-.46 .13-.61.14-.14.3-.36.45-.54.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.53-.08-.15-.69-1.67-.95-2.28-.25-.6-.5-.52-.69-.53l-.59-.01c-.2 0-.52 .08-.79 .38-.27 .3-1.04 1.02-1.04 2.49 0 1.47 1.07 2.9 1.22 3.1 .15 .2 2.1 3.2 5.08 4.49 .71 .31 1.26 .49 1.69 .62 .71 .23 1.35 .2 1.86 .12 .57-.08 1.78-.73 2.03-1.43 .25-.7 .25-1.3 .18-1.43-.08-.13-.28-.2-.58-.35z"/></svg>') center/contain no-repeat;
-      mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23000"><path d="M20.52 3.48A11.94 11.94 0 0012.06 0C5.49.03.18 5.34.21 11.9a11.74 11.74 0 001.51 5.86L0 24l6.4-1.66a11.93 11.93 0 005.66 1.44h.01c6.57 0 11.88-5.31 11.91-11.88a11.78 11.78 0 00-3.46-8.42zm-8.46 18.26h-.01A9.96 9.96 0 016.76 20l-.35-.21-3.8 1 1.02-3.7-.23-.38a9.93 9.93 0 01-1.5-5.2c-.02-5.5 4.46-9.99 9.96-10.01h.01c2.67 0 5.18 1.04 7.07 2.93a9.9 9.9 0 012.94 7.06c-.02 5.5-4.51 9.97-10.01 9.97zm5.48-7.46c-.3-.15-1.78-.88-2.06-.98-.28-.1-.48-.15-.69 .15-.2 .3-.79 .98-.97 1.18-.18 .2-.36 .23-.66 .08-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.48-1.76-1.66-2.06-.17-.3-.02-.46 .13-.61.14-.14.3-.36.45-.54.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.53-.08-.15-.69-1.67-.95-2.28-.25-.6-.5-.52-.69-.53l-.59-.01c-.2 0-.52 .08-.79 .38-.27 .3-1.04 1.02-1.04 2.49 0 1.47 1.07 2.9 1.22 3.1 .15 .2 2.1 3.2 5.08 4.49 .71 .31 1.26 .49 1.69 .62 .71 .23 1.35 .2 1.86 .12 .57-.08 1.78-.73 2.03-1.43 .25-.7 .25-1.3 .18-1.43-.08-.13-.28-.2-.58-.35z"/></svg>') center/contain no-repeat;
+      mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23000"><path d="M20.52 3.48A11.94 11.94 0 0012.06 0C5.49.03.18 5.34.21 11.9a11.74 11.74 0 001.51 5.86L0 24l6.4-1.66a11.93 11.93 0 005.66 1.44h.01c6.57 0 11.88-5.31 11.91-11.88a11.78 11.78 0 00-3.46-8.42zm-8.46 18.26h-.01A9.96 9.96 0 016.76 20l-.35-.21-3.8 1 1.02-3.7-.23-.38a9.93 9.93 0 01-1.5-5.2c-.02-5.5 4.46-9.99 9.96-10.01h.01c2.67 0 5.18 1.04 7.07 2.93a9.9 9.9 0 012.94 7.06c-.02 5.5-4.51 9.97-10.01 9.97zm5.48-7.46c-.3-.15-1.78-.88-2.06-.98-.28-.1-.48-.15-.69 .15-.2 .3-.79 .98-.97 1.18-.18 .2-.36 .23-.66 .08-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.48-1.76-1.66-2.06-.17-.3-.02-.46 .13-.61.14-.14.3-.36.45-.54.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.53-.08-.15-.69-1.67-.95-2.28-.25-.6-.5-.52-.69-.53l-.59-.01c-.2 0-.52 .08-.79 .38-.27 .3-1.04 1.02-1.04 2.49 0 1.47 1.07 2.9 1.22 3.1 .15 .2 2.1 3.2 5.08 4.49 .71 .31 1.26 .49 1.69 .62 .71 .23 1.35 .2 1.86 .12 .57-.08 1.78-.73 2.03-1.43 .25-.7 .25-1.3 .18-1.43-.08-.13-.28-.2-.58-.35z') center/contain no-repeat;
     }
   </style>
 </head>
 <body>
   <div class="lmx-wrapper">
-    <section class="lmx-container">
+    <section class="lmx-container" id="equipe">
       <header class="lmx-header">
         <h1 class="lmx-title">Nossa Equipe</h1>
         <p class="lmx-subtitle">Fale direto com uma vendedora da loja física</p>
       </header>
 
-      <div class="lmx-grid">
-        <!-- Card 1 - Contato 1 -->
-        <div class="lmx-card">
-          <span class="lmx-badge">Loja física</span>
-          <img class="lmx-avatar" src="https://raw.githubusercontent.com/josefelipe43257/Publica-o-de-imagens-e-videos-publicos/refs/heads/main/download.png" alt="Contato 1">
-          <div class="lmx-name"></div>
-          <div class="lmx-role">Consultora de vendas</div>
-          <a class="lmx-button" target="_blank" rel="noopener" href="https://wa.me/5581996009240">
-            <span class="lmx-wa-icon"></span> Falar com vendedora
-          </a>
-        </div>
+      <!-- Dots (mobile) -->
+      <div class="lmx-dots" id="dots" aria-hidden="true">
+        <span class="lmx-dot"></span>
+        <span class="lmx-dot"></span>
+        <span class="lmx-dot"></span>
+      </div>
 
-        <!-- Card 2 - Contato 2 -->
-        <div class="lmx-card">
-          <span class="lmx-badge">Loja física</span>
-          <img class="lmx-avatar" src="https://raw.githubusercontent.com/josefelipe43257/Publica-o-de-imagens-e-videos-publicos/refs/heads/main/download.png" alt="Contato 2">
-          <div class="lmx-name"></div>
-          <div class="lmx-role">Consultora de vendas</div>
-          <a class="lmx-button" target="_blank" rel="noopener" href="https://wa.me/5581997314351">
-            <span class="lmx-wa-icon"></span> Falar com vendedora
-          </a>
-        </div>
+      <!-- CARROSSEL / GRID -->
+      <div class="lmx-carousel" id="carousel">
+        <!-- Slide 1 - Contato 1 -->
+        <article class="lmx-slide">
+          <div class="lmx-card">
+            <span class="lmx-badge">Loja física</span>
+            <img class="lmx-avatar" src="https://raw.githubusercontent.com/josefelipe43257/Publica-o-de-imagens-e-videos-publicos/refs/heads/main/download.png" alt="Contato 1">
+            <div class="lmx-name"></div>
+            <div class="lmx-role">Consultora de vendas</div>
+            <a class="lmx-button" target="_blank" rel="noopener" href="https://wa.me/5581996009240">
+              <span class="lmx-wa-icon"></span> Falar com vendedora
+            </a>
+          </div>
+        </article>
 
-        <!-- Card 3 - Vera -->
-        <div class="lmx-card">
-          <span class="lmx-badge">Loja física</span>
-          <img class="lmx-avatar" src="https://raw.githubusercontent.com/josefelipe43257/Publica-o-de-imagens-e-videos-publicos/refs/heads/main/WhatsApp%20Image%202025-08-01%20at%2010.47.34.jpeg" alt="Vera">
-          <div class="lmx-name">Vera</div>
-          <div class="lmx-role">Consultora de vendas</div>
-          <a class="lmx-button" target="_blank" rel="noopener" href="https://wa.me/5581996522650">
-            <span class="lmx-wa-icon"></span> Falar com vendedora
-          </a>
-        </div>
+        <!-- Slide 2 - Contato 2 -->
+        <article class="lmx-slide">
+          <div class="lmx-card">
+            <span class="lmx-badge">Loja física</span>
+            <img class="lmx-avatar" src="https://raw.githubusercontent.com/josefelipe43257/Publica-o-de-imagens-e-videos-publicos/refs/heads/main/download.png" alt="Contato 2">
+            <div class="lmx-name"></div>
+            <div class="lmx-role">Consultora de vendas</div>
+            <a class="lmx-button" target="_blank" rel="noopener" href="https://wa.me/5581997314351">
+              <span class="lmx-wa-icon"></span> Falar com vendedora
+            </a>
+          </div>
+        </article>
+
+        <!-- Slide 3 - Vera -->
+        <article class="lmx-slide">
+          <div class="lmx-card">
+            <span class="lmx-badge">Loja física</span>
+            <img class="lmx-avatar" src="https://raw.githubusercontent.com/josefelipe43257/Publica-o-de-imagens-e-videos-publicos/refs/heads/main/WhatsApp%20Image%202025-08-01%20at%2010.47.34.jpeg" alt="Vera">
+            <div class="lmx-name">Vera</div>
+            <div class="lmx-role">Consultora de vendas</div>
+            <a class="lmx-button" target="_blank" rel="noopener" href="https://wa.me/5581996522650">
+              <span class="lmx-wa-icon"></span> Falar com vendedora
+            </a>
+          </div>
+        </article>
       </div>
     </section>
   </div>
+
+  <script>
+    (function(){
+      const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+      const carousel = document.getElementById('carousel');
+      const dotsWrap = document.getElementById('dots');
+      const slides = Array.from(carousel.children);
+
+      // 1) Em mobile: embaralha a ordem para fairness
+      if(!isDesktop){
+        // Fisher–Yates shuffle
+        for(let i = slides.length - 1; i > 0; i--){
+          const j = Math.floor(Math.random() * (i + 1));
+          carousel.appendChild(slides[j].parentNode ? slides[j] : slides[i]);
+          [slides[i], slides[j]] = [slides[j], slides[i]];
+        }
+      }
+
+      // Helper: atualiza dots pelo slide central
+      const dots = Array.from(dotsWrap.children);
+      function syncDots(){
+        if(isDesktop) return;
+        const cardWidth = slides[0].getBoundingClientRect().width + 16; // width + gap
+        const idx = Math.round(carousel.scrollLeft / cardWidth);
+        dots.forEach((d,i)=>d.classList.toggle('is-active', i===idx));
+      }
+
+      // 2) Auto-rotação (só no mobile) com início aleatório
+      if(!isDesktop){
+        // começar em um slide aleatório
+        const startIdx = Math.floor(Math.random()*slides.length);
+        setTimeout(()=> carousel.scrollTo({left:carousel.children[startIdx].offsetLeft, behavior:'instant'}), 0);
+        dots.forEach((d,i)=> d.classList.toggle('is-active', i===startIdx));
+
+        let timer = setInterval(()=>{
+          const cardWidth = slides[0].getBoundingClientRect().width + 16;
+          const maxIdx = slides.length - 1;
+          const curIdx = Math.round(carousel.scrollLeft / cardWidth);
+          const nextIdx = (curIdx + 1) > maxIdx ? 0 : curIdx + 1;
+          carousel.scrollTo({ left: carousel.children[nextIdx].offsetLeft, behavior: 'smooth' });
+        }, 4000);
+
+        // Pausa quando o usuário interagir
+        ['touchstart','mousedown','wheel'].forEach(evt=>{
+          carousel.addEventListener(evt, ()=> clearInterval(timer), {passive:true});
+        });
+
+        // Atualiza dots no scroll
+        carousel.addEventListener('scroll', ()=> { window.requestAnimationFrame(syncDots); }, {passive:true});
+      } else {
+        // Em desktop: marca todos os dots “ativos” só pra não distrair (ou esconde no CSS)
+        dots.forEach(d=>d.classList.add('is-active'));
+      }
+    })();
+  </script>
 </body>
 </html>
-
