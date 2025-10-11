@@ -6,7 +6,7 @@
   <title>Equipe | Linda Moça Exclusive</title>
   <style>
     :root {
-      --bg: #ffffff; /* Fundo branco */
+      --bg: #ffffff;
       --card-bg: #ffffff;
       --text: #1b1b1b;
       --muted: #5d5d5d;
@@ -23,6 +23,7 @@
       font-family: Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
+      -webkit-tap-highlight-color: transparent;
     }
 
     .lmx-wrapper { display: flex; justify-content: center; padding: 40px 20px; }
@@ -65,6 +66,7 @@
       display:inline-flex; align-items:center; justify-content:center; gap:8px;
       text-decoration:none; color:#fff; background:var(--brand);
       padding:12px 24px; border-radius:999px; font-weight:bold; font-size:14px;
+      min-height:44px;
       transition:transform .2s ease-in-out, background-color .2s ease-in-out;
       animation:pulseGreen 2.2s infinite ease-in-out;
     }
@@ -77,8 +79,8 @@
 
     .lmx-wa-icon{
       width:18px; height:18px; display:inline-block; background:currentColor;
-      -webkit-mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23000"><path d="M20.52 3.48A11.94 11.94 0 0012.06 0C5.49.03.18 5.34.21 11.9a11.74 11.74 0 001.51 5.86L0 24l6.4-1.66a11.93 11.93 0 005.66 1.44h.01c6.57 0 11.88-5.31 11.91-11.88a11.78 11.78 0 00-3.46-8.42zm-8.46 18.26h-.01A9.96 9.96 0 016.76 20l-.35-.21-3.8 1 1.02-3.7-.23-.38a9.93 9.93 0 01-1.5-5.2c-.02-5.5 4.46-9.99 9.96-10.01h.01c2.67 0 5.18 1.04 7.07 2.93a9.9 9.9 0 012.94 7.06c-.02 5.5-4.51 9.97-10.01 9.97zm5.48-7.46c-.3-.15-1.78-.88-2.06-.98-.28-.1-.48-.15-.69.15-.2.3-.79.98-.97 1.18-.18.2-.36.23-.66.08-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.48-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.14-.14.3-.36.45-.54.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.53-.08-.15-.69-1.67-.95-2.28-.25-.6-.5-.52-.69-.53l-.59-.01c-.2 0-.52.08-.79.38-.27.3-1.04 1.02-1.04 2.49 0 1.47 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.35.2 1.86.12.57-.08 1.78-.73 2.03-1.43.25-.7.25-1.3.18-1.43-.08-.13-.28-.2-.58-.35z"/></svg>') center/contain no-repeat;
-      mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23000"><path d="M20.52 3.48A11.94 11.94 0 0012.06 0C5.49.03.18 5.34.21 11.9a11.74 11.74 0 001.51 5.86L0 24l6.4-1.66a11.93 11.93 0 005.66 1.44h.01c6.57 0 11.88-5.31 11.91-11.88a11.78 11.78 0 00-3.46-8.42zm-8.46 18.26h-.01A9.96 9.96 0 016.76 20l-.35-.21-3.8 1 1.02-3.7-.23-.38a9.93 9.93 0 01-1.5-5.2c-.02-5.5 4.46-9.99 9.96-10.01h.01c2.67 0 5.18 1.04 7.07 2.93a9.9 9.9 0 012.94 7.06c-.02 5.5-4.51 9.97-10.01 9.97zm5.48-7.46c-.3-.15-1.78-.88-2.06-.98-.28-.1-.48-.15-.69.15-.2.3-.79.98-.97 1.18-.18.2-.36.23-.66.08-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.48-1.76-1.66-2.06-.17-.3-.02-.46 .13-.61.14-.14.3-.36.45-.54.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.53-.08-.15-.69-1.67-.95-2.28-.25-.6-.5-.52-.69-.53l-.59-.01c-.2 0-.52.08-.79.38-.27.3-1.04 1.02-1.04 2.49 0 1.47 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.35.2 1.86.12.57-.08 1.78-.73 2.03-1.43.25-.7.25-1.3.18-1.43-.08-.13-.28-.2-.58-.35z"/></svg>') center/contain no-repeat;
+      -webkit-mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23000"><path d="M20.52 3.48A11.94 11.94 0 0012.06 0C5.49.03.18 5.34.21 11.9a11.74 11.74 0 001.51 5.86L0 24l6.4-1.66a11.93 11.93 0 005.66 1.44h.01c6.57 0 11.88-5.31 11.91-11.88a11.78 11.78 0 00-3.46-8.42zm-8.46 18.26h-.01A9.96 9.96 0 016.76 20l-.35-.21-3.8 1 1.02-3.7-.23-.38a9.93 9.93 0 01-1.5-5.2c-.02-5.5 4.46-9.99 9.96-10.01h.01c2.67 0 5.18 1.04 7.07 2.93a9.9 9.9 0 012.94 7.06c-.02 5.5-4.51 9.97-10.01 9.97zm5.48-7.46c-.3-.15-1.78-.88-2.06-.98-.28-.1-.48-.15-.69 .15-.2 .3-.79 .98-.97 1.18-.18 .2-.36 .23-.66 .08-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.48-1.76-1.66-2.06-.17-.3-.02-.46 .13-.61.14-.14.3-.36.45-.54.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.53-.08-.15-.69-1.67-.95-2.28-.25-.6-.5-.52-.69-.53l-.59-.01c-.2 0-.52 .08-.79 .38-.27 .3-1.04 1.02-1.04 2.49 0 1.47 1.07 2.9 1.22 3.1 .15 .2 2.1 3.2 5.08 4.49 .71 .31 1.26 .49 1.69 .62 .71 .23 1.35 .2 1.86 .12 .57-.08 1.78-.73 2.03-1.43 .25-.7 .25-1.3 .18-1.43-.08-.13-.28-.2-.58-.35z"/></svg>') center/contain no-repeat;
+      mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23000"><path d="M20.52 3.48A11.94 11.94 0 0012.06 0C5.49.03.18 5.34.21 11.9a11.74 11.74 0 001.51 5.86L0 24l6.4-1.66a11.93 11.93 0 005.66 1.44h.01c6.57 0 11.88-5.31 11.91-11.88a11.78 11.78 0 00-3.46-8.42zm-8.46 18.26h-.01A9.96 9.96 0 016.76 20l-.35-.21-3.8 1 1.02-3.7-.23-.38a9.93 9.93 0 01-1.5-5.2c-.02-5.5 4.46-9.99 9.96-10.01h.01c2.67 0 5.18 1.04 7.07 2.93a9.9 9.9 0 012.94 7.06c-.02 5.5-4.51 9.97-10.01 9.97zm5.48-7.46c-.3-.15-1.78-.88-2.06-.98-.28-.1-.48-.15-.69 .15-.2 .3-.79 .98-.97 1.18-.18 .2-.36 .23-.66 .08-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.48-1.76-1.66-2.06-.17-.3-.02-.46 .13-.61.14-.14.3-.36.45-.54.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.53-.08-.15-.69-1.67-.95-2.28-.25-.6-.5-.52-.69-.53l-.59-.01c-.2 0-.52 .08-.79 .38-.27 .3-1.04 1.02-1.04 2.49 0 1.47 1.07 2.9 1.22 3.1 .15 .2 2.1 3.2 5.08 4.49 .71 .31 1.26 .49 1.69 .62 .71 .23 1.35 .2 1.86 .12 .57-.08 1.78-.73 2.03-1.43 .25-.7 .25-1.3 .18-1.43-.08-.13-.28-.2-.58-.35z"/></svg>') center/contain no-repeat;
     }
   </style>
 </head>
@@ -91,41 +93,35 @@
       </header>
 
       <div class="lmx-grid">
-        <!-- Card 1 -->
+        <!-- Card 1 - Atendimento Geral -->
         <div class="lmx-card">
           <span class="lmx-badge">Loja física</span>
           <img class="lmx-avatar" src="https://raw.githubusercontent.com/josefelipe43257/Publica-o-de-imagens-e-videos-publicos/refs/heads/main/download.png" alt="Atendimento Geral">
-          <div class="lmx-name"></div>
+          <div class="lmx-name">Atendimento Geral</div>
           <div class="lmx-role">Consultora de vendas</div>
-          <!-- LINK CORRIGIDO -->
-          <a class="lmx-button" target="_blank" rel="noopener"
-             href="https://wa.me/5581996009240?text=Ol%C3%A1%21%20Vim%20pelo%20link%20da%20bio%2C%20e%20gostaria%20de%20ajuda%21%20%F0%9F%96%A4">
+          <a class="lmx-button" target="_blank" rel="noopener" href="https://wa.me/5581996009240">
             <span class="lmx-wa-icon"></span> Falar com vendedora
           </a>
         </div>
 
-        <!-- Card 2 -->
+        <!-- Card 2 - Larissa -->
         <div class="lmx-card">
           <span class="lmx-badge">Loja física</span>
           <img class="lmx-avatar" src="https://raw.githubusercontent.com/josefelipe43257/Publica-o-de-imagens-e-videos-publicos/refs/heads/main/download.png" alt="Larissa">
-          <div class="lmx-name"></div>
+          <div class="lmx-name">Larissa</div>
           <div class="lmx-role">Consultora de vendas</div>
-          <!-- LINK CORRIGIDO -->
-          <a class="lmx-button" target="_blank" rel="noopener"
-             href="https://wa.me/5581996009240?text=Ol%C3%A1%21%20Vim%20pelo%20link%20da%20bio%2C%20e%20gostaria%20de%20ajuda%21%20%F0%9F%96%A4">
+          <a class="lmx-button" target="_blank" rel="noopener" href="https://wa.me/5581996522650">
             <span class="lmx-wa-icon"></span> Falar com vendedora
           </a>
         </div>
 
-        <!-- Card 3 -->
+        <!-- Card 3 - Vera -->
         <div class="lmx-card">
           <span class="lmx-badge">Loja física</span>
           <img class="lmx-avatar" src="https://raw.githubusercontent.com/josefelipe43257/Publica-o-de-imagens-e-videos-publicos/refs/heads/main/WhatsApp%20Image%202025-08-01%20at%2010.47.34.jpeg" alt="Vera">
           <div class="lmx-name">Vera</div>
           <div class="lmx-role">Consultora de vendas</div>
-          <!-- LINK CORRIGIDO -->
-          <a class="lmx-button" target="_blank" rel="noopener"
-             href="https://wa.me/5581996009240?text=Ol%C3%A1%21%20Vim%20pelo%20link%20da%20bio%2C%20e%20gostaria%20de%20ajuda%21%20%F0%9F%96%A4">
+          <a class="lmx-button" target="_blank" rel="noopener" href="https://wa.me/5581997314351">
             <span class="lmx-wa-icon"></span> Falar com vendedora
           </a>
         </div>
@@ -134,4 +130,3 @@
   </div>
 </body>
 </html>
-
