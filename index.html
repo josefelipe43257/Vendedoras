@@ -18,7 +18,6 @@
     .lmx-title{font-size:28px;font-weight:bold;margin:0 0 4px;}
     .lmx-subtitle{font-size:15px;color:var(--muted);margin:0 0 12px;}
 
-    /* Atalhos (pílulas) para cada contato */
     .lmx-shortcuts{
       position:sticky; top:0; z-index:10; background:var(--bg);
       display:flex; gap:8px; justify-content:center; padding:8px 0 12px;
@@ -32,10 +31,9 @@
     .lmx-pill:hover{transform:translateY(-1px); background:#e8e8e8;}
     .lmx-pill:focus-visible{outline:2px solid #111; outline-offset:2px;}
 
-    /* Grid não agrupado (cartões independentes) */
     .lmx-grid{
       display:grid; gap:16px; margin-top:16px;
-      grid-template-columns:1fr; /* mobile */
+      grid-template-columns:1fr;
     }
     @media(min-width:600px){ .lmx-grid{ grid-template-columns:repeat(2,1fr);} }
     @media(min-width:992px){ .lmx-grid{ grid-template-columns:repeat(3,1fr);} }
@@ -77,30 +75,27 @@
         <p class="lmx-subtitle">Fale direto com uma vendedora da loja física</p>
       </header>
 
-      <!-- Atalhos (não agrupa, apenas âncoras) -->
       <nav class="lmx-shortcuts" aria-label="Atalhos de contato">
         <button class="lmx-pill" data-target="#c1">Fernanda</button>
         <button class="lmx-pill" data-target="#c2">Tayssa</button>
         <button class="lmx-pill" data-target="#c3">Vera</button>
+        <button class="lmx-pill" data-target="#c4">Jéssica</button>
       </nav>
 
-      <!-- Grid: cartões separados -->
       <div class="lmx-grid" id="grid">
-        <!-- Contato 1 -->
         <article class="lmx-card" id="c1">
           <span class="lmx-badge">Loja física</span>
-          <img class="lmx-avatar" src="https://raw.githubusercontent.com/josefelipe43257/Publica-o-de-imagens-e-videos-publicos/refs/heads/main/Imagem%20do%20WhatsApp%20de%202025-10-14%20%C3%A0(s)%2017.24.19_66dbabd7.jpg" alt="Contato 1">
-          <h2 class="lmx-name"></h2>
+          <img class="lmx-avatar" src="https://raw.githubusercontent.com/josefelipe43257/Publica-o-de-imagens-e-videos-publicos/refs/heads/main/Imagem%20do%20WhatsApp%20de%202025-10-14%20%C3%A0(s)%2017.24.19_66dbabd7.jpg" alt="Fernanda">
+          <h2 class="lmx-name">Fernanda</h2>
           <p class="lmx-role">Consultora de vendas</p>
           <a class="lmx-button" target="_blank" rel="noopener" href="https://wa.me/5581996009240">
             <span class="lmx-wa-icon"></span> Falar com vendedora
           </a>
         </article>
 
-        <!-- Contato 2 -->
         <article class="lmx-card" id="c2">
           <span class="lmx-badge">Loja física</span>
-          <img class="lmx-avatar" src="https://raw.githubusercontent.com/josefelipe43257/Publica-o-de-imagens-e-videos-publicos/refs/heads/main/Imagem%20do%20WhatsApp%20de%202025-10-11%20%C3%A0(s)%2017.54.26_aac20ae3.jpg" alt="Contato 2">
+          <img class="lmx-avatar" src="https://raw.githubusercontent.com/josefelipe43257/Publica-o-de-imagens-e-videos-publicos/refs/heads/main/Imagem%20do%20WhatsApp%20de%202025-10-11%20%C3%A0(s)%2017.54.26_aac20ae3.jpg" alt="Tayssa">
           <h2 class="lmx-name">Tayssa</h2>
           <p class="lmx-role">Consultora de vendas</p>
           <a class="lmx-button" target="_blank" rel="noopener" href="https://wa.me/5581997314351">
@@ -108,13 +103,23 @@
           </a>
         </article>
 
-        <!-- Vera -->
         <article class="lmx-card" id="c3">
           <span class="lmx-badge">Loja física</span>
           <img class="lmx-avatar" src="https://raw.githubusercontent.com/josefelipe43257/Publica-o-de-imagens-e-videos-publicos/refs/heads/main/WhatsApp%20Image%202025-08-01%20at%2010.47.34.jpeg" alt="Vera">
           <h2 class="lmx-name">Vera</h2>
           <p class="lmx-role">Consultora de vendas</p>
           <a class="lmx-button" target="_blank" rel="noopener" href="https://wa.me/5581996522650">
+            <span class="lmx-wa-icon"></span> Falar com vendedora
+          </a>
+        </article>
+
+        <!-- Novo contato: Jéssica -->
+        <article class="lmx-card" id="c4">
+          <span class="lmx-badge">Loja física</span>
+          <img class="lmx-avatar" src="https://raw.githubusercontent.com/josefelipe43257/Publica-o-de-imagens-e-videos-publicos/refs/heads/main/Imagem%20do%20WhatsApp%20de%202025-10-14%20%C3%A0(s)%2017.24.45_86f21801.jpg" alt="Jéssica">
+          <h2 class="lmx-name">Jéssica</h2>
+          <p class="lmx-role">Consultora de vendas</p>
+          <a class="lmx-button" target="_blank" rel="noopener" href="https://wa.me/5581990000000">
             <span class="lmx-wa-icon"></span> Falar com vendedora
           </a>
         </article>
@@ -128,18 +133,16 @@
       const cards = Array.from(grid.children);
       const isMobile = window.matchMedia('(max-width: 599px)').matches;
 
-      // Embaralha a ordem no mobile (justiça de visibilidade) – sem agrupar
       if(isMobile){
         const shuffled = cards.sort(()=> Math.random() - 0.5);
         shuffled.forEach(card => grid.appendChild(card));
       }
 
-      // Atalhos para rolagem suave até cada contato
       document.querySelectorAll('.lmx-pill').forEach(btn=>{
         btn.addEventListener('click', ()=>{
           const target = document.querySelector(btn.dataset.target);
           if(target){
-            const y = target.getBoundingClientRect().top + window.scrollY - 12; // pequeno offset
+            const y = target.getBoundingClientRect().top + window.scrollY - 12;
             window.scrollTo({ top: y, behavior: 'smooth' });
           }
         });
@@ -148,8 +151,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
