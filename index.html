@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Equipe | Linda Moça Exclusive</title>
 
-  <!-- GA4 - ID: G-C8PTRJQEET -->
+  <!-- GA4 - STREAM LINDA MOÇA (ID: G-C8PTRJQEET) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-C8PTRJQEET"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -216,13 +216,11 @@
       const cards = Array.from(grid.children);
       const isMobile = window.matchMedia('(max-width: 599px)').matches;
 
-      // Embaralha a ordem no mobile
       if(isMobile){
         const shuffled = cards.sort(()=> Math.random() - 0.5);
         shuffled.forEach(card => grid.appendChild(card));
       }
 
-      // Atalhos por nome
       document.querySelectorAll('.lmx-pill').forEach(btn=>{
         btn.addEventListener('click', ()=>{
           const target = document.querySelector(btn.dataset.target);
@@ -238,6 +236,8 @@
 
       waButtons.forEach(btn => {
         btn.addEventListener('click', () => {
+          console.log('Clique WhatsApp – vendedora:', btn.dataset.vendedora);
+
           if (typeof gtag === 'function') {
             gtag('event', 'whatsapp_equipe_click', {
               vendedora: btn.dataset.vendedora,
