@@ -37,7 +37,6 @@
     .lmx-title{font-size:28px;font-weight:bold;margin:0 0 4px;}
     .lmx-subtitle{font-size:15px;color:var(--muted);margin:0 0 12px;}
 
-    /* Atalhos */
     .lmx-shortcuts{
       position:sticky; top:0; z-index:10; background:var(--bg);
       display:flex; gap:8px; justify-content:center;
@@ -56,7 +55,6 @@
     .lmx-pill:hover{transform:translateY(-1px); background:#e8e8e8;}
     .lmx-pill:focus-visible{outline:2px solid #111; outline-offset:2px;}
 
-    /* Grid */
     .lmx-grid{
       display:grid; gap:16px; margin-top:16px;
       grid-template-columns:1fr;
@@ -73,7 +71,6 @@
       }
     }
 
-    /* Card */
     .lmx-card{
       background:var(--card-bg);
       border-radius:var(--radius);
@@ -111,7 +108,6 @@
     .lmx-name{ font-size:17px; font-weight:bold; margin:10px 0 4px; }
     .lmx-role{ font-size:14px; color:var(--muted); margin-bottom:20px; }
 
-    /* Botão WhatsApp */
     .lmx-button{
       display:inline-flex; align-items:center; justify-content:center; gap:8px;
       text-decoration:none;
@@ -137,7 +133,6 @@
       background:var(--brand-hover);
     }
 
-    /* Ícone WhatsApp */
     .lmx-wa-icon{
       width:18px; height:18px;
       display:inline-block;
@@ -161,7 +156,6 @@
       <nav class="lmx-shortcuts" aria-label="Atalhos de contato">
         <button class="lmx-pill" data-target="#c2">Tayssa</button>
         <button class="lmx-pill" data-target="#c3">Vera</button>
-        <button class="lmx-pill" data-target="#c4">Jéssica</button>
       </nav>
 
       <!-- Grid -->
@@ -193,60 +187,8 @@
           </a>
         </article>
 
-        <!-- Jéssica -->
-        <article class="lmx-card" id="c4">
-          <span class="lmx-badge">Loja física</span>
-          <img class="lmx-avatar" src="https://raw.githubusercontent.com/josefelipe43257/Publica-o-de-imagens-e-videos-publicos/refs/heads/main/Imagem%20do%20WhatsApp%20de%202025-10-14%20%C3%A0(s)%2017.24.45_86f21801.jpg" alt="Jéssica">
-          <h2 class="lmx-name">Jéssica</h2>
-          <p class="lmx-role">Consultora de vendas</p>
-          <a class="lmx-button" target="_blank" rel="noopener"
-             href="https://wa.me/5581993824864?text=Oi%21%20Vim%20pelo%20link%20da%20bio%20da%20Linda%20Mo%C3%A7a%20Exclusive%20%F0%9F%92%96&utm_source=link_bio&utm_medium=whatsapp&utm_campaign=jessica"
-             data-vendedora="Jéssica">
-            <span class="lmx-wa-icon"></span> Falar com vendedora
-          </a>
-        </article>
-
       </div>
     </section>
   </div>
-
-  <script>
-    (function(){
-      const grid = document.getElementById('grid');
-      const cards = Array.from(grid.children);
-      const isMobile = window.matchMedia('(max-width: 599px)').matches;
-
-      if(isMobile){
-        const shuffled = cards.sort(()=> Math.random() - 0.5);
-        shuffled.forEach(card => grid.appendChild(card));
-      }
-
-      document.querySelectorAll('.lmx-pill').forEach(btn=>{
-        btn.addEventListener('click', ()=>{
-          const target = document.querySelector(btn.dataset.target);
-          if(target){
-            const y = target.getBoundingClientRect().top + window.scrollY - 12;
-            window.scrollTo({ top: y, behavior: 'smooth' });
-          }
-        });
-      });
-
-      // 🔎 RASTREIO GA4 – CLIQUES NOS BOTÕES DO WHATSAPP
-      const waButtons = document.querySelectorAll('.lmx-button[data-vendedora]');
-
-      waButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          console.log('Clique WhatsApp – vendedora:', btn.dataset.vendedora);
-
-          if (typeof gtag === 'function') {
-            gtag('event', 'whatsapp_equipe_click', {
-              vendedora: btn.dataset.vendedora,
-              page_location: window.location.href
-            });
-          }
-        });
-      });
-    })();
-  </script>
 </body>
 </html>
