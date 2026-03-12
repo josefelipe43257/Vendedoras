@@ -73,15 +73,15 @@
 
     .lmx-grid{
       width:100%;
-      display:flex;
+      display:grid;
+      grid-template-columns:repeat(3, minmax(240px, 360px));
       justify-content:center;
-      align-items:center;
+      gap:20px;
       margin-top:16px;
     }
 
     .lmx-card{
       width:100%;
-      max-width:360px;
       background:var(--card-bg);
       border-radius:var(--radius);
       box-shadow:var(--shadow-sm);
@@ -164,6 +164,18 @@
       -webkit-mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.52 3.48A11.94 11.94 0 0012.06 0C5.49.03.18 5.34.21 11.9a11.74 11.74 0 001.51 5.86L0 24l6.4-1.66a11.93 11.93 0 005.66 1.44h.01c6.57 0 11.88-5.31 11.91-11.88a11.78 11.78 0 00-3.46-8.42z"/></svg>') center/contain no-repeat;
               mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.52 3.48A11.94 11.94 0 0012.06 0C5.49.03.18 5.34.21 11.9a11.74 11.74 0 001.51 5.86L0 24l6.4-1.66a11.93 11.93 0 005.66 1.44h.01c6.57 0 11.88-5.31 11.91-11.88a11.78 11.78 0 00-3.46-8.42z"/></svg>') center/contain no-repeat;
     }
+
+    @media (max-width: 980px){
+      .lmx-grid{
+        grid-template-columns:repeat(2, minmax(240px, 360px));
+      }
+    }
+
+    @media (max-width: 640px){
+      .lmx-grid{
+        grid-template-columns:1fr;
+      }
+    }
   </style>
 </head>
 
@@ -184,6 +196,30 @@
           <a class="lmx-button" target="_blank" rel="noopener"
              href="https://wa.me/5581996522650?text=Oi%21%20Vim%20pelo%20link%20da%20bio%20da%20Linda%20Mo%C3%A7a%20Exclusive%20%F0%9F%92%96&utm_source=link_bio&utm_medium=whatsapp&utm_campaign=vera"
              data-vendedora="Vera">
+            <span class="lmx-wa-icon"></span> Falar com vendedora
+          </a>
+        </article>
+
+        <article class="lmx-card" id="c4">
+          <span class="lmx-badge">Loja física</span>
+          <img class="lmx-avatar" src="https://via.placeholder.com/300x300.png?text=Vendedora+1" alt="Vendedora 1">
+          <h2 class="lmx-name">Vendedora 1</h2>
+          <p class="lmx-role">Consultora de vendas</p>
+          <a class="lmx-button" target="_blank" rel="noopener"
+             href="https://wa.me/5581997314351?text=Oi%21%20Vim%20pelo%20link%20da%20bio%20da%20Linda%20Mo%C3%A7a%20Exclusive%20%F0%9F%92%96&utm_source=link_bio&utm_medium=whatsapp&utm_campaign=vendedora1"
+             data-vendedora="Vendedora 1">
+            <span class="lmx-wa-icon"></span> Falar com vendedora
+          </a>
+        </article>
+
+        <article class="lmx-card" id="c5">
+          <span class="lmx-badge">Loja física</span>
+          <img class="lmx-avatar" src="https://via.placeholder.com/300x300.png?text=Vendedora+2" alt="Vendedora 2">
+          <h2 class="lmx-name">Vendedora 2</h2>
+          <p class="lmx-role">Consultora de vendas</p>
+          <a class="lmx-button" target="_blank" rel="noopener"
+             href="https://wa.me/5581993824864?text=Oi%21%20Vim%20pelo%20link%20da%20bio%20da%20Linda%20Mo%C3%A7a%20Exclusive%20%F0%9F%92%96&utm_source=link_bio&utm_medium=whatsapp&utm_campaign=vendedora2"
+             data-vendedora="Vendedora 2">
             <span class="lmx-wa-icon"></span> Falar com vendedora
           </a>
         </article>
