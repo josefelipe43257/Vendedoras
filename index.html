@@ -188,7 +188,7 @@
       </header>
 
       <div class="lmx-grid" id="lmx-grid">
-        <article class="lmx-card" id="c3">
+        <article class="lmx-card" id="c1">
           <span class="lmx-badge">Loja física</span>
           <img class="lmx-avatar" src="https://raw.githubusercontent.com/josefelipe43257/Publica-o-de-imagens-e-videos-publicos/refs/heads/main/WhatsApp%20Image%202025-08-01%20at%2010.47.34.jpeg" alt="Vera">
           <h2 class="lmx-name">Vera</h2>
@@ -200,26 +200,26 @@
           </a>
         </article>
 
-        <article class="lmx-card" id="c4">
+        <article class="lmx-card" id="c2">
           <span class="lmx-badge">Loja física</span>
-          <img class="lmx-avatar" src="https://via.placeholder.com/300x300.png?text=Vendedora+1" alt="Vendedora 1">
-          <h2 class="lmx-name">Vendedora 1</h2>
+          <img class="lmx-avatar" src="https://raw.githubusercontent.com/lindamoca/Publica-o-de-imagens-e-videos-publicos/refs/heads/main/IMG_7819.jpg" alt="Leticia Santos">
+          <h2 class="lmx-name">Leticia Santos</h2>
           <p class="lmx-role">Consultora de vendas</p>
           <a class="lmx-button" target="_blank" rel="noopener"
-             href="https://wa.me/5581997314351?text=Oi%21%20Vim%20pelo%20link%20da%20bio%20da%20Linda%20Mo%C3%A7a%20Exclusive%20%F0%9F%92%96&utm_source=link_bio&utm_medium=whatsapp&utm_campaign=vendedora1"
-             data-vendedora="Vendedora 1">
+             href="https://wa.me/5581997314351?text=Oi%21%20Vim%20pelo%20link%20da%20bio%20da%20Linda%20Mo%C3%A7a%20Exclusive%20%F0%9F%92%96&utm_source=link_bio&utm_medium=whatsapp&utm_campaign=leticia_santos"
+             data-vendedora="Leticia Santos">
             <span class="lmx-wa-icon"></span> Falar com vendedora
           </a>
         </article>
 
-        <article class="lmx-card" id="c5">
+        <article class="lmx-card" id="c3">
           <span class="lmx-badge">Loja física</span>
-          <img class="lmx-avatar" src="https://via.placeholder.com/300x300.png?text=Vendedora+2" alt="Vendedora 2">
-          <h2 class="lmx-name">Vendedora 2</h2>
+          <img class="lmx-avatar" src="https://raw.githubusercontent.com/lindamoca/Publica-o-de-imagens-e-videos-publicos/refs/heads/main/IMG_7819.jpg" alt="Gessi Tavares">
+          <h2 class="lmx-name">Gessi Tavares</h2>
           <p class="lmx-role">Consultora de vendas</p>
           <a class="lmx-button" target="_blank" rel="noopener"
-             href="https://wa.me/5581993824864?text=Oi%21%20Vim%20pelo%20link%20da%20bio%20da%20Linda%20Mo%C3%A7a%20Exclusive%20%F0%9F%92%96&utm_source=link_bio&utm_medium=whatsapp&utm_campaign=vendedora2"
-             data-vendedora="Vendedora 2">
+             href="https://wa.me/5581993824864?text=Oi%21%20Vim%20pelo%20link%20da%20bio%20da%20Linda%20Mo%C3%A7a%20Exclusive%20%F0%9F%92%96&utm_source=link_bio&utm_medium=whatsapp&utm_campaign=gessi_tavares"
+             data-vendedora="Gessi Tavares">
             <span class="lmx-wa-icon"></span> Falar com vendedora
           </a>
         </article>
@@ -230,14 +230,22 @@
   <script>
     (function(){
       const grid = document.getElementById('lmx-grid');
-      const cards = Array.from(grid.children);
+      if (!grid) return;
 
-      for(let i = cards.length - 1; i > 0; i--){
-        const j = Math.floor(Math.random() * (i + 1));
-        [cards[i], cards[j]] = [cards[j], cards[i]];
+      function embaralharCardsSomenteMobile() {
+        if (window.innerWidth <= 640) {
+          const cards = Array.from(grid.children);
+
+          for (let i = cards.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [cards[i], cards[j]] = [cards[j], cards[i]];
+          }
+
+          cards.forEach(card => grid.appendChild(card));
+        }
       }
 
-      cards.forEach(card => grid.appendChild(card));
+      embaralharCardsSomenteMobile();
     })();
   </script>
 </body>
